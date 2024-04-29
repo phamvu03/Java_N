@@ -10,6 +10,6 @@ package group9_java.school_bussiness_tour_management;
  */
 public class group9_javaschool_bussiness_tour_management {
     public static void main(String[] args) {
-        System.out.println("Test");
+        System.out.println("DM Vu");
     }
 }
