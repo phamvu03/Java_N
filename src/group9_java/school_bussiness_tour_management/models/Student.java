@@ -40,4 +40,8 @@ public class Student extends Person {
         return id + "," + code + "," + firstName + "," + lastName + "," + address + "," + phoneNumber + "," + email + "," + birthDate + "," + studentTours + "," + classId;
     }
 
+    public String toStringFile() {
+        return id + "," + code + "," + firstName + "," + lastName + "," + address + "," + phoneNumber + "," + email + "," + birthDate + "," + classId;
+
+    }
 }

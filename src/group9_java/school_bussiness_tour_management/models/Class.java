@@ -23,6 +23,12 @@ public class Class {
     public Class() {
     }
 
+    public Class(int id, String code, String name) {
+        this.id = id;
+        this.code = code;
+        this.name = name;
+    }
+
     public void setId(int id) {
         this.id = id;
     }
@@ -60,6 +66,8 @@ public class Class {
         return id + "," + code + "," + name + "," + students;
     }
 
-    
+    public String toStringFile() {
+        return id + "," + code + "," + name;
+    }
 
 }
