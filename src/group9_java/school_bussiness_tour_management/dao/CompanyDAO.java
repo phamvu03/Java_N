@@ -18,7 +18,7 @@ import java.util.List;
  * @author LAM
  */
 public class CompanyDAO {
-    private static String filePath = "src/group7_java/school_bussiness_tour_management/files/Company.txt";
+    private static String filePath = "src/group9_java/school_bussiness_tour_management/files/Company.txt";
 
     public static List<Company> readFromFile() throws Exception{
         List<Company> data = new ArrayList<Company>();

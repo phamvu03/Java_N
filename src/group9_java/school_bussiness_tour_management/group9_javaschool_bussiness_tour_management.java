@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package group9_java.school_bussiness_tour_management;
+import group9_java.school_bussiness_tour_management.views.Login;
 
 /**
  *
@@ -10,6 +11,8 @@ package group9_java.school_bussiness_tour_management;
  */
 public class group9_javaschool_bussiness_tour_management {
     public static void main(String[] args) {
-        System.out.println("Test_2");
+        Login loginView = new Login();
+        loginView.setLocationRelativeTo(null);
+        loginView.setVisible(true);
     }
 }

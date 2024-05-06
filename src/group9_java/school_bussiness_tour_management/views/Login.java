@@ -60,7 +60,7 @@ public class Login extends javax.swing.JFrame {
         setTitle("Welcome");
         setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/group7_java/school_bussiness_tour_management/resources/loginImage.jpg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/group9_java/school_bussiness_tour_management/resources/loginImage.jpg")));
         jLabel1.setMaximumSize(new java.awt.Dimension(512, 468));
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -190,6 +190,7 @@ public class Login extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
