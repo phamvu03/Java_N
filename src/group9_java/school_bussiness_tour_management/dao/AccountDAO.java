@@ -19,7 +19,7 @@ import java.util.List;
  */
 public class AccountDAO {
 
-    private static String filePath = "src/group7_java/school_bussiness_tour_management/files/Account.txt";
+    private static String filePath = "src/group9_java/school_bussiness_tour_management/files/Account.txt";
 
     public static List<Account> readFromFile() throws Exception {
         List<Account> data = new ArrayList<Account>();

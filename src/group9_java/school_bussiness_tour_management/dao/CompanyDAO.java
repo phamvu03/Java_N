@@ -4,7 +4,6 @@
  */
 package group9_java.school_bussiness_tour_management.dao;
 
-
 import group9_java.school_bussiness_tour_management.models.Company;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -18,13 +17,13 @@ import java.util.List;
  * @author LAM
  */
 public class CompanyDAO {
-    private static String filePath = "src/group7_java/school_bussiness_tour_management/files/Company.txt";
+    private static String filePath = "src/group9_java/school_bussiness_tour_management/files/Company.txt";
 
-    public static List<Company> readFromFile() throws Exception{
+    public static List<Company> readFromFile() throws Exception {
         List<Company> data = new ArrayList<Company>();
         BufferedReader read = new BufferedReader(new FileReader(filePath));
         String line;
-        while((line = read.readLine())!=null){
+        while ((line = read.readLine()) != null) {
             String[] parts = line.split(",");
             int id = Integer.parseInt(parts[0]);
             String code = parts[1];
@@ -33,12 +32,12 @@ public class CompanyDAO {
             String email = parts[4];
             String phone = parts[5];
             String address = parts[6];
-            Company com = new Company(id, code,name,description,email,phone,address);
+            Company com = new Company(id, code, name, description, email, phone, address);
             data.add(com);
         }
         return data;
     }
-    
+
     public static void writeToFile(List<Company> companies) throws Exception {
         FileWriter fw = new FileWriter(filePath);
         BufferedWriter bw = new BufferedWriter(fw);
