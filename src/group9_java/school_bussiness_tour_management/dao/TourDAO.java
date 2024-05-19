@@ -2,11 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package group7_java.school_bussiness_tour_management.dao;
+package group9_java.school_bussiness_tour_management.dao;
 
-import group7_java.school_bussiness_tour_management.models.Student;
-import group7_java.school_bussiness_tour_management.models.Tour;
-import group7_java.school_bussiness_tour_management.models.StudentTour;
+import group9_java.school_bussiness_tour_management.models.Student;
+import group9_java.school_bussiness_tour_management.models.Tour;
+import group9_java.school_bussiness_tour_management.models.StudentTour;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
