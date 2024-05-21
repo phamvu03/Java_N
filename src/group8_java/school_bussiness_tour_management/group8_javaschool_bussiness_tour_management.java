@@ -10,6 +10,6 @@ package group8_java.school_bussiness_tour_management;
  */
 public class group8_javaschool_bussiness_tour_management {
     public static void main(String[] args) {
-        System.out.println("Test_2");
+        
     }
 }
