@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package group9_java.school_bussiness_tour_management.models;
+package group8_java.school_bussiness_tour_management.models;
 
 import java.util.List;
 
@@ -25,6 +25,18 @@ public class Tour {
     private int companyId;
     private int teacherId;
     private String presentator;
+
+    public Tour(int id, String code, String name, String description, String startDate, String availables, int companyId, int teacherId, String presentator) {
+        this.id = id;
+        this.code = code;
+        this.name = name;
+        this.description = description;
+        this.startDate = startDate;
+        this.availables = availables;
+        this.companyId = companyId;
+        this.teacherId = teacherId;
+        this.presentator = presentator;
+    }
 
     public Tour() {
     }

@@ -1,10 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package group9_java.school_bussiness_tour_management.dao;
+package group8_java.school_bussiness_tour_management.dao;
 
-import group9_java.school_bussiness_tour_management.models.Company;
+import group8_java.school_bussiness_tour_management.models.Company;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
@@ -12,10 +8,6 @@ import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author LAM
- */
 public class CompanyDAO {
     private static String filePath = "src/group9_java/school_bussiness_tour_management/files/Company.txt";
 
