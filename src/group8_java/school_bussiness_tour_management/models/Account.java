@@ -16,6 +16,7 @@ public class Account {
     private int id;
     private String username;
     private String password;
+    private String role;
 
     public Account() {
     }
@@ -25,10 +26,17 @@ public class Account {
         this.password = password;
     }
 
-    public Account(int id, String username, String password) {
+    public Account(String username, String password, String role) {
+        this.username = username;
+        this.password = password;
+        this.role = role;
+    }
+
+    public Account(int id, String username, String password, String role) {
         this.id = id;
         this.username = username;
         this.password = password;
+        this.role = role;
     }
 
     public int getId() {
@@ -55,9 +63,17 @@ public class Account {
         this.password = password;
     }
 
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
     @Override
     public String toString() {
-        return id + "," + username + "," + password;
+        return id + "," + username + "," + password + "," + role;
     }
 
 }

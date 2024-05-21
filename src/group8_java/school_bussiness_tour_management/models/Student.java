@@ -5,6 +5,7 @@
  */
 package group8_java.school_bussiness_tour_management.models;
 
+import java.awt.image.BufferedImage;
 import java.util.List;
 
 /**
@@ -13,10 +14,42 @@ import java.util.List;
  */
 public class Student extends Person {
 
+    private String imagePath;
     private List<StudentTour> studentTours;
     private int classId;
+    private int accountId;
 
     public Student() {
+    }
+
+    public Student(int id) {
+        this.id = id;
+    }
+
+    public Student(int id, String imagePath, String code, String firstName, String lastName, String address, String phoneNumber, String email, String birthDate, int classId) {
+        super(id, code, firstName, lastName, address, phoneNumber, email, birthDate);
+        this.classId = classId;
+        this.imagePath = imagePath;
+    }
+
+    public Student(String imagePath, String code, String firstName, String lastName, String address, String phoneNumber, String email, String birthDate, int classId) {
+        super(code, firstName, lastName, address, phoneNumber, email, birthDate);
+        this.classId = classId;
+        this.imagePath = imagePath;
+    }
+
+    public Student(int id, String code, String firstName, String lastName, String address, String phoneNumber, String email, String birthDate, List<StudentTour> studentTours, int classId) {
+        super(id, code, firstName, lastName, address, phoneNumber, email, birthDate);
+        this.studentTours = studentTours;
+        this.classId = classId;
+    }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
     }
 
     public List<StudentTour> getStudentTours() {
@@ -35,9 +68,22 @@ public class Student extends Person {
         this.classId = classId;
     }
 
+    public int getAccountId() {
+        return accountId;
+    }
+
+    public void setAccountId(int accountId) {
+        this.accountId = accountId;
+    }
+
     @Override
     public String toString() {
         return id + "," + code + "," + firstName + "," + lastName + "," + address + "," + phoneNumber + "," + email + "," + birthDate + "," + studentTours + "," + classId;
+    }
+
+    public String toStringFile() {
+        return id + "," + code + "," + firstName + "," + lastName + "," + address + "," + phoneNumber + "," + email + "," + birthDate + "," + classId;
+
     }
 
 }
