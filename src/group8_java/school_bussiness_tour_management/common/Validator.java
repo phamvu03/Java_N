@@ -1,9 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package group9_java.school_bussiness_tour_management.common;
+package group8_java.school_bussiness_tour_management.common;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -12,10 +7,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- *
- * @author PC
- */
 public class Validator {
 
     public static boolean isDate(String target) {
