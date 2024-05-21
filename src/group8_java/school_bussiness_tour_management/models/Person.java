@@ -27,6 +27,27 @@ public class Person {
     public Person() {
     }
 
+    public Person(int id, String code, String firstName, String lastName, String address, String phoneNumber, String email, String birthDate) {
+        this.id = id;
+        this.code = code;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.birthDate = birthDate;
+    }
+
+    public Person(String code, String firstName, String lastName, String address, String phoneNumber, String email, String birthDate) {
+        this.code = code;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.birthDate = birthDate;
+    }
+
     public void setId(int id) {
         this.id = id;
     }

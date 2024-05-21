@@ -1,3 +1,7 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package group8_java.school_bussiness_tour_management.dao;
 
 import group8_java.school_bussiness_tour_management.models.Student;
@@ -16,16 +20,20 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *
+ * @author gialo
+ */
 public class TourDAO {
 
-    private static String filePath = "src/group9_java/school_bussiness_tour_management/files/Tour.json";
+    private static String filePath = "src/group8_java/school_bussiness_tour_management/files/Tour.json";
 
     public static List<Tour> readFromFile() throws Exception {
         List<Tour> data = new ArrayList<>();
 
         Path path = Paths.get(filePath);
         if (Files.exists(path) && Files.size(path) > 0) {
-            try (Reader reader = new FileReader(filePath)) {
+            try ( Reader reader = new FileReader(filePath)) {
                 JSONArray tourArray = (JSONArray) new org.json.simple.parser.JSONParser().parse(reader);
 
                 for (Object tourObject : tourArray) {
@@ -36,13 +44,12 @@ public class TourDAO {
                     String name = tourJson.get("name").toString();
                     String description = tourJson.get("description").toString();
                     String startDate = tourJson.get("startDate").toString();
-                    String availables = tourJson.get("availables").toString();
+                    int availables = Integer.parseInt(tourJson.get("availables").toString());
                     int companyId = Integer.parseInt(tourJson.get("companyId").toString());
                     int teacherId = Integer.parseInt(tourJson.get("teacherId").toString());
                     String presentator = tourJson.get("presentator").toString();
 
-                    Tour tour = new Tour(id, code, name, description, startDate, availables, 
-                            companyId, teacherId, presentator);
+                    Tour tour = new Tour(id, code, name, description, startDate, availables, companyId, teacherId, presentator);
 
                     JSONArray studentToursArray = (JSONArray) tourJson.get("studentTours");
                     if (studentToursArray != null) {
@@ -61,8 +68,7 @@ public class TourDAO {
                     data.add(tour);
                 }
             } catch (Exception e) {
-//                throw new IOException("Error reading Company data from file", e);
-                throw new IOException("Lỗi nhận dạng thông tin doanh nghiệp nhập trong file", e);
+                throw new IOException("Error reading Company data from file", e);
             }
         }
         return data;
@@ -101,7 +107,7 @@ public class TourDAO {
             tourArray.add(tourJson);
         }
 
-        try (FileWriter file = new FileWriter(filePath)) {
+        try ( FileWriter file = new FileWriter(filePath)) {
             file.write(tourArray.toJSONString());
         } catch (IOException e) {
             e.printStackTrace();

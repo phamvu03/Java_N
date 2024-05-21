@@ -1,2 +1,0 @@
-0,001,SamSung,,SamSung@gmail.com,012345678,Hà Nội
-0,002,LetCo,,letco@gmail.com,012345678,Hà Nội

@@ -113,7 +113,7 @@ public class Company {
 
     @Override
     public String toString() {
-        return id + "," + code + "," + name + "," + description + "," + email + "," + phoneNumber + "," + address + "," + tours;
+        return name;
     }
     
     public String toStringFile() {
