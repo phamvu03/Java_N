@@ -15,6 +15,7 @@ public class StudentTour {
     private int tourId;
     private int rate;
 
+
     public StudentTour() {
     }
 
