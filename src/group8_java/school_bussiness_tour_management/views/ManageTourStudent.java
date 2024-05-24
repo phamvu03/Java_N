@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package views;
+package group8_java.school_bussiness_tour_management.views;
 
 import com.itextpdf.text.log.Logger;
 import group7_java.school_bussiness_tour_management.common.MessageDialog;

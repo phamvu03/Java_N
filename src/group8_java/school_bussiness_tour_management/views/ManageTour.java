@@ -2,17 +2,17 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package views;
+package group8_java.school_bussiness_tour_management.views;
 
-import group7_java.school_bussiness_tour_management.common.MessageDialog;
-import group7_java.school_bussiness_tour_management.dao.TeacherDAO;
-import group7_java.school_bussiness_tour_management.models.Company;
-import group7_java.school_bussiness_tour_management.models.Teacher;
-import group7_java.school_bussiness_tour_management.models.Tour;
-import group7_java.school_bussiness_tour_management.services.CompanyService;
-import group7_java.school_bussiness_tour_management.services.TeacherService;
-import group7_java.school_bussiness_tour_management.services.TourService;
-import static group7_java.school_bussiness_tour_management.services.TourService.getLastTourId;
+import group8_java.school_bussiness_tour_management.common.MessageDialog;
+import group8_java.school_bussiness_tour_management.dao.TeacherDAO;
+import group8_java.school_bussiness_tour_management.models.Company;
+import group8_java.school_bussiness_tour_management.models.Teacher;
+import group8_java.school_bussiness_tour_management.models.Tour;
+import group8_java.school_bussiness_tour_management.services.CompanyService;
+import group8_java.school_bussiness_tour_management.services.TeacherService;
+import group8_java.school_bussiness_tour_management.services.TourService;
+import static group8_java.school_bussiness_tour_management.services.TourService.getLastTourId;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
