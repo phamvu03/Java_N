@@ -5,15 +5,10 @@ import group8_java.school_business_tour_management.dao.StudentDAO;
 import group8_java.school_business_tour_management.models.Classroom;
 import group8_java.school_business_tour_management.models.Student;
 import group8_java.school_business_tour_management.services.ClassroomService;
-import group8_java.school_business_tour_management.dao.ClassroomDAO;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
 public class ManageClassroom extends javax.swing.JFrame {
-
-    /**
-     * Creates new form ManageAccount
-     */
     public ManageClassroom() {
         initComponents();
         setLocationRelativeTo(null);
