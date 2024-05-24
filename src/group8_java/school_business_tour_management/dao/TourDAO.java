@@ -1,12 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package group8_java.school_bussiness_tour_management.dao;
+package group8_java.school_business_tour_management.dao;
 
-import group8_java.school_bussiness_tour_management.models.Student;
-import group8_java.school_bussiness_tour_management.models.Tour;
-import group8_java.school_bussiness_tour_management.models.StudentTour;
+import group8_java.school_business_tour_management.models.Tour;
+import group8_java.school_business_tour_management.models.StudentTour;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -20,13 +15,9 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author gialo
- */
 public class TourDAO {
 
-    private static String filePath = "src/group8_java/school_bussiness_tour_management/files/Tour.json";
+    private static String filePath = "src/group8_java/school_business_tour_management/files/Tour.json";
 
     public static List<Tour> readFromFile() throws Exception {
         List<Tour> data = new ArrayList<>();

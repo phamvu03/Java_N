@@ -1,7 +1,7 @@
-package group8_java.school_bussiness_tour_management.dao;
+package group8_java.school_business_tour_management.dao;
 
-import group8_java.school_bussiness_tour_management.models.Classroom;
-import group8_java.school_bussiness_tour_management.models.Student;
+import group8_java.school_business_tour_management.models.Classroom;
+import group8_java.school_business_tour_management.models.Student;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -14,9 +14,10 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
+//reset dao
 public class ClassroomDAO {
 
-    private static String filePath = "src/group8_java/school_bussiness_tour_management/files/Classroom.json";
+    private static String filePath = "src/group8_java/school_business_tour_management/files/Classroom.json";
 
     public static List<Classroom> readFromFile() throws Exception {
         List<Classroom> data = new ArrayList<>();
@@ -49,8 +50,6 @@ public class ClassroomDAO {
                             students.add(student);
                             classroom.setStudents(students);
                         }
-
-                        
                     }
                     data.add(classroom);
                 }
@@ -62,22 +61,14 @@ public class ClassroomDAO {
         return data;
     }
 
-    /**
-     *
-     * @param classrooms
-     * @throws Exception
-     */
     public static void writeToFile(List<Classroom> classrooms) throws Exception {
         JSONArray classroomArray = new JSONArray();
-
-        // Convert each Account object to JSON and add it to the array
         for (Classroom item : classrooms) {
             JSONObject itemJson = new JSONObject();
             itemJson.put("id", item.getId());
             itemJson.put("code", item.getCode());
             itemJson.put("name", item.getName());
 
-            //convert student to Array
             List<Student> students = item.getStudents();
             if (students != null && !students.isEmpty()) {
                 JSONArray studentsArray = new JSONArray();
@@ -91,11 +82,9 @@ public class ClassroomDAO {
                 }
                 itemJson.put("students", studentsArray);
             }
-
             classroomArray.add(itemJson);
         }
 
-        // Write the JSON array to the file
         try (FileWriter file = new FileWriter(filePath)) {
             file.write(classroomArray.toJSONString());
         }

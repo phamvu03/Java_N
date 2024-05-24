@@ -1,7 +1,7 @@
-package group8_java.school_bussiness_tour_management.dao;
+package group8_java.school_business_tour_management.dao;
 
-import group8_java.school_bussiness_tour_management.models.Teacher;
-import group8_java.school_bussiness_tour_management.models.Tour;
+import group8_java.school_business_tour_management.models.Teacher;
+import group8_java.school_business_tour_management.models.Tour;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -14,13 +14,9 @@ import java.util.List;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-/**
- *
- * @author NGUYEN TRANG
- */
 public class TeacherDAO {
 
-    private static final String filePath = "src/group8_java/school_bussiness_tour_management/files/Teacher.json";
+    private static final String filePath = "src/group8_java/school_business_tour_management/files/Teacher.json";
 
     public static List<Teacher> readFromFile() throws Exception {
         List<Teacher> data = new ArrayList<>();

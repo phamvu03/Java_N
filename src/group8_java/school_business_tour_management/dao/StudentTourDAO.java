@@ -1,6 +1,6 @@
-package group8_java.school_bussiness_tour_management.dao;
+package group8_java.school_business_tour_management.dao;
 
-import group8_java.school_bussiness_tour_management.models.StudentTour;
+import group8_java.school_business_tour_management.models.StudentTour;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -18,7 +18,7 @@ import java.util.List;
 
 public class StudentTourDAO {
 
-    private static final String filePath = "src/group8_java/school_bussiness_tour_management/files/StudentTour.json";
+    private static final String filePath = "src/group8_java/school_business_tour_management/files/StudentTour.json";
 
     public static List<StudentTour> readFromFile() throws IOException {
         List<StudentTour> data = new ArrayList<>();

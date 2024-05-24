@@ -1,6 +1,6 @@
-package group8_java.school_bussiness_tour_management.dao;
+package group8_java.school_business_tour_management.dao;
 
-import group8_java.school_bussiness_tour_management.models.Account;
+import group8_java.school_business_tour_management.models.Account;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -14,7 +14,7 @@ import java.util.List;
 
 public class AccountDAO {
 
-    private static String filePath = "src/group8_java/school_bussiness_tour_management/files/Account.json";
+    private static String filePath = "src/group8_java/school_business_tour_management/files/Account.json";
 
     public static List<Account> readFromFile() throws Exception {
         List<Account> data = new ArrayList<>();
