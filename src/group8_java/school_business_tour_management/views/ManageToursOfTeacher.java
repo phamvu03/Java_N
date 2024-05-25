@@ -23,7 +23,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author NGUYEN TRANG
+ * @author VV
  */
 public class ManageToursOfTeacher extends javax.swing.JFrame {
 

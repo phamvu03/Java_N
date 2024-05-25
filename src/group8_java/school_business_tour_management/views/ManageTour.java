@@ -22,7 +22,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author gialo
+ * @author VV
  */
 public class ManageTour extends javax.swing.JFrame {
 

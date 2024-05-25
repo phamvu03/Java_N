@@ -21,7 +21,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author NGUYEN TRANG
+ * @author VV
  */
 public class ManageTeacher extends javax.swing.JFrame {
 
