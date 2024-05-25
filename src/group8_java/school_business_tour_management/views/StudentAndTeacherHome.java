@@ -401,19 +401,19 @@ public class StudentAndTeacherHome extends javax.swing.JFrame {
 
     private void registeredTourButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_registeredTourButtonActionPerformed
         try {
-            // dispose();
-            // ShowData screen = null;
-            // if (loggedInTeacher != null) {
-            // TransmittedDataShowData data = new TransmittedDataShowData("toursOfTeacher",
-            // "studentAndTeacherHome", loggedInTeacher.getId(), false);
-            // screen = new ShowData(data);
-            // } else if (loggedInStudent != null) {
-            // TransmittedDataShowData data = new TransmittedDataShowData("toursOfStudents",
-            // "studentAndTeacherHome", loggedInStudent.getId(), true);
-            // screen = new ShowData(data);
-            // }
-            // screen.setLocationRelativeTo(null);
-            // screen.setVisible(true);
+            dispose();
+            ShowData screen = null;
+            if (loggedInTeacher != null) {
+                TransmittedDataShowData data = new TransmittedDataShowData("toursOfTeacher",
+                        "studentAndTeacherHome", loggedInTeacher.getId(), false);
+                screen = new ShowData(data);
+            } else if (loggedInStudent != null) {
+                TransmittedDataShowData data = new TransmittedDataShowData("toursOfStudents",
+                        "studentAndTeacherHome", loggedInStudent.getId(), true);
+                screen = new ShowData(data);
+            }
+            screen.setLocationRelativeTo(null);
+            screen.setVisible(true);
         } catch (Exception ex) {
             MessageDialog.showErrorDialog(jPanel1, "Có lỗi, chi tiết: " + ex.getMessage(), "Lỗi");
         }
@@ -540,13 +540,13 @@ public class StudentAndTeacherHome extends javax.swing.JFrame {
     }// GEN-LAST:event_showUpcomingToursActionPerformed
 
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_logoutButtonActionPerformed
-         int key = MessageDialog.showConfirmDialog(this, "Bạn có chắc muốn đăng xuất khỏi hệ thống?", "Xác nhận");
-//         if (key == 0) {
-//         dispose();
-//         Login loginScreen = new Login();
-//         loginScreen.setLocationRelativeTo(null);
-//         loginScreen.setVisible(true);
-//         }
+        int key = MessageDialog.showConfirmDialog(this, "Bạn có chắc muốn đăng xuất khỏi hệ thống?", "Xác nhận");
+        // if (key == 0) {
+        // dispose();
+        // Login loginScreen = new Login();
+        // loginScreen.setLocationRelativeTo(null);
+        // loginScreen.setVisible(true);
+        // }
     }// GEN-LAST:event_logoutButtonActionPerformed
 
     private void searchInputKeyReleased(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_searchInputKeyReleased
@@ -615,36 +615,37 @@ public class StudentAndTeacherHome extends javax.swing.JFrame {
     private void showStudentsOfTourActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_showStudentsOfTourActionPerformed
 
         try {
-             int index = tourNowTable.getSelectedRow();
-             if (index == -1) {
-             MessageDialog.showInfoDialog(this, "Vui chọn chuyến tham quan mà bạn muốn xem danh sách sinh viên", "Thông báo");
-             return;
-             }
-             List<Tour> data_tour = TourDAO.readFromFile();
-             String tourCode = (String) tourNowTable.getValueAt(index, 0);
-             int tourID = -1;
-             for (Tour item : data_tour) {
-             if (item.getCode().equalsIgnoreCase(tourCode)) {
-             tourID = item.getId();
-             break;
-             }
-             }
-             dispose();
-             TransmittedDataShowData data_show = null;
-             if (loggedInTeacher != null) {
-             data_show = new TransmittedDataShowData("studentTours",
-             "studentAndTeacherHome", tourID, loggedInTeacher.getId(), false);
-             if (reated.equalsIgnoreCase("tookPlaceTours")) {
-             data_show = new TransmittedDataShowData("studentTookPlaceTours",
-             "studentAndTeacherHome", tourID, loggedInTeacher.getId(), false);
-             }
-             } else if (loggedInStudent != null) {
-             data_show = new TransmittedDataShowData("studentTours",
-             "studentAndTeacherHome", tourID, loggedInStudent.getId(), true);
-             }
-             ShowData screen = new ShowData(data_show);
-             screen.setLocationRelativeTo(null);
-             screen.setVisible(true);
+            int index = tourNowTable.getSelectedRow();
+            if (index == -1) {
+                MessageDialog.showInfoDialog(this, "Vui chọn chuyến tham quan mà bạn muốn xem danh sách sinh viên",
+                        "Thông báo");
+                return;
+            }
+            List<Tour> data_tour = TourDAO.readFromFile();
+            String tourCode = (String) tourNowTable.getValueAt(index, 0);
+            int tourID = -1;
+            for (Tour item : data_tour) {
+                if (item.getCode().equalsIgnoreCase(tourCode)) {
+                    tourID = item.getId();
+                    break;
+                }
+            }
+            dispose();
+            TransmittedDataShowData data_show = null;
+            if (loggedInTeacher != null) {
+                data_show = new TransmittedDataShowData("studentTours",
+                        "studentAndTeacherHome", tourID, loggedInTeacher.getId(), false);
+                if (reated.equalsIgnoreCase("tookPlaceTours")) {
+                    data_show = new TransmittedDataShowData("studentTookPlaceTours",
+                            "studentAndTeacherHome", tourID, loggedInTeacher.getId(), false);
+                }
+            } else if (loggedInStudent != null) {
+                data_show = new TransmittedDataShowData("studentTours",
+                        "studentAndTeacherHome", tourID, loggedInStudent.getId(), true);
+            }
+            ShowData screen = new ShowData(data_show);
+            screen.setLocationRelativeTo(null);
+            screen.setVisible(true);
         } catch (Exception ex) {
             MessageDialog.showErrorDialog(jPanel1,
                     "Có lỗi ở màn StudentAndTeacherHome cụ thể là nút showStudentsOfTourActionPerformed, chi tiết: "
