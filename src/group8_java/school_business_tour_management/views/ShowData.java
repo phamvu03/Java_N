@@ -5,7 +5,6 @@
 package group8_java.school_business_tour_management.views;
 
 import group8_java.school_business_tour_management.common.MessageDialog;
-//import group8_java.school_business_tour_management.common.PDFExporter;
 import group8_java.school_business_tour_management.common.TransmittedDataShowData;
 import group8_java.school_business_tour_management.dao.StudentDAO;
 import group8_java.school_business_tour_management.dao.StudentTourDAO;
@@ -34,7 +33,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author NGUYEN TRANG
+ * @author VV
  */
 public class ShowData extends javax.swing.JFrame {
 
@@ -49,19 +48,14 @@ public class ShowData extends javax.swing.JFrame {
             initComponents();
             setLocationRelativeTo(null);
             checkAndInitializeTable();
-            if (dataOfShowData.getTypeData().equalsIgnoreCase("toursOfTeacher") || dataOfShowData.getTypeData().equalsIgnoreCase("toursOfStudents")) {
+            if (dataOfShowData.getTypeData().equalsIgnoreCase("toursOfTeacher")
+                    || dataOfShowData.getTypeData().equalsIgnoreCase("toursOfStudents")) {
                 clearDataButton.setText("Hủy chuyến tham quan");
             }
             if (dataOfShowData.getTypeData().equalsIgnoreCase("studentTookPlaceTours")) {
                 clearDataButton.setText("Đánh giá");
-                exportPDFFileButton.setText("Sinh viên chưa đánh giá");
-                exportExcelFileButton.setText("Sinh viên đã đánh giá");
             }
-            if(dataOfShowData.getTypeData().equalsIgnoreCase("toursOfStudents"))
-            {
-                exportPDFFileButton.setVisible(false);
-                exportExcelFileButton.setVisible(false);
-            }
+
         } catch (Exception ex) {
             MessageDialog.showErrorDialog(this, "Có lỗi xảy ra! Chi tiết: " + ex.getMessage(), "lỗi");
             ex.printStackTrace();
@@ -69,7 +63,8 @@ public class ShowData extends javax.swing.JFrame {
     }
 
     private ShowData() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from
+                                                                       // nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     private void checkAndInitializeTable() {
@@ -78,33 +73,41 @@ public class ShowData extends javax.swing.JFrame {
                 tableModel = new DefaultTableModel();
                 if (dataOfShowData.getTypeData().equalsIgnoreCase("teachers")) {
                     titleMainLabel.setText("Danh sách giáo viên đại diện doanh nghiệp");
-                    tableModel.setColumnIdentifiers(new String[]{"Mã giáo viên", "Họ tên",
-                        "Địa chỉ", "Điện thoại", "Email", "Ngày sinh"});
+                    tableModel.setColumnIdentifiers(new String[] { "Mã giáo viên", "Họ tên",
+                            "Địa chỉ", "Điện thoại", "Email", "Ngày sinh" });
                 } else if (dataOfShowData.getTypeData().equalsIgnoreCase("students")) {
                     titleMainLabel.setText("Danh sách sinh viên được quản lý");
-                    tableModel.setColumnIdentifiers(new String[]{"Mã sinh viên", "Họ", "Tên", "Địa chỉ", "SĐT", "Email", "Ngày sinh", "Class id"});
+                    tableModel.setColumnIdentifiers(new String[] { "Mã sinh viên", "Họ", "Tên", "Địa chỉ", "SĐT",
+                            "Email", "Ngày sinh", "Class id" });
                 } else if (dataOfShowData.getTypeData().equalsIgnoreCase("companys")) {
                     titleMainLabel.setText("Danh sách doanh nghiệp liên kết với nhà trường");
-                    tableModel.setColumnIdentifiers(new String[]{"Mã doanh nghiệp", "Doanh nghiệp", "Địa chỉ",
-                        "Email", "Điện thoại", "Mô tả"});
+                    tableModel.setColumnIdentifiers(new String[] { "Mã doanh nghiệp", "Doanh nghiệp", "Địa chỉ",
+                            "Email", "Điện thoại", "Mô tả" });
                 } else if (dataOfShowData.getTypeData().equalsIgnoreCase("tours")) {
                     titleMainLabel.setText("Danh sách các chuyến tham quan được tổ chức");
-                    tableModel.setColumnIdentifiers(new String[]{"Mã chuyến", "Tên chuyến", "Thời gian", "Mô tả",
-                        "Số lượng", "Người đại diện", "Công ty", "Giáo viên"});
+                    tableModel.setColumnIdentifiers(new String[] { "Mã chuyến", "Tên chuyến", "Thời gian", "Mô tả",
+                            "Số lượng", "Người đại diện", "Công ty", "Giáo viên" });
                 } else if (dataOfShowData.getTypeData().equalsIgnoreCase("studentTours")) {
                     titleMainLabel.setText("Danh sách sinh viên của chuyến tham quan");
-                    tableModel.setColumnIdentifiers(new String[]{"Mã sinh viên", "Họ", "Tên", "Địa chỉ", "SĐT", "Email", "Ngày sinh"});
+                    tableModel.setColumnIdentifiers(
+                            new String[] { "Mã sinh viên", "Họ", "Tên", "Địa chỉ", "SĐT", "Email", "Ngày sinh" });
                 } else if (dataOfShowData.getTypeData().equalsIgnoreCase("toursOfTeacher")) {
                     Teacher teacher = TeacherService.getTeacherById(dataOfShowData.getTeacherId());
-                    titleMainLabel.setText("DANH SÁCH CÁC CHUYẾN THAM QUAN CỦA GIÁO VIÊN " + teacher.getLastName().toUpperCase() + " " + teacher.getFirstName().toUpperCase());
-                    tableModel.setColumnIdentifiers(new String[]{"Mã chuyến tham quan", "Tên chuyến tham quan", "Ngày tham quan", "Doanh nghiệp chủ quản", "Số lượng sinh viên tham gia"});
+                    titleMainLabel.setText("DANH SÁCH CÁC CHUYẾN THAM QUAN CỦA GIÁO VIÊN "
+                            + teacher.getLastName().toUpperCase() + " " + teacher.getFirstName().toUpperCase());
+                    tableModel.setColumnIdentifiers(new String[] { "Mã chuyến tham quan", "Tên chuyến tham quan",
+                            "Ngày tham quan", "Doanh nghiệp chủ quản", "Số lượng sinh viên tham gia" });
                 } else if (dataOfShowData.getTypeData().equalsIgnoreCase("toursOfStudents")) {
                     Student stu = StudentService.getById(dataOfShowData.getStudentId());
-                    titleMainLabel.setText("DANH SÁCH CÁC CHUYẾN THAM QUAN CỦA SINH VIÊN " + stu.getLastName().toUpperCase() + " " + stu.getFirstName().toUpperCase());
-                    tableModel.setColumnIdentifiers(new String[]{"Mã chuyến tham quan", "Tên chuyến tham quan", "Mô tả", "Ngày bắt đầu", "Số ghế ", "Tên doanh nghiệp", "Tên giáo viên", "Người đại diện"});
+                    titleMainLabel.setText("DANH SÁCH CÁC CHUYẾN THAM QUAN CỦA SINH VIÊN "
+                            + stu.getLastName().toUpperCase() + " " + stu.getFirstName().toUpperCase());
+                    tableModel
+                            .setColumnIdentifiers(new String[] { "Mã chuyến tham quan", "Tên chuyến tham quan", "Mô tả",
+                                    "Ngày bắt đầu", "Số ghế ", "Tên doanh nghiệp", "Tên giáo viên", "Người đại diện" });
                 } else if (dataOfShowData.getTypeData().equalsIgnoreCase("studentTookPlaceTours")) {
                     titleMainLabel.setText("Danh sách sinh viên của chuyến tham quan");
-                    tableModel.setColumnIdentifiers(new String[]{"Mã sinh viên", "Họ", "Tên", "Địa chỉ", "SĐT", "Email", "Ngày sinh", "Điểm đánh giá"});
+                    tableModel.setColumnIdentifiers(new String[] { "Mã sinh viên", "Họ", "Tên", "Địa chỉ", "SĐT",
+                            "Email", "Ngày sinh", "Điểm đánh giá" });
                 }
                 dataTable.setModel(tableModel);
                 loadTableData();
@@ -120,7 +123,8 @@ public class ShowData extends javax.swing.JFrame {
      * regenerated by the Form Editor.
      */
     @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         titleMainLabel = new javax.swing.JLabel();
@@ -131,8 +135,6 @@ public class ShowData extends javax.swing.JFrame {
         backButton = new javax.swing.JToggleButton();
         searchInput = new javax.swing.JTextField();
         searchButton = new javax.swing.JToggleButton();
-        exportExcelFileButton = new javax.swing.JToggleButton();
-        exportPDFFileButton = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Xem dữ liệu");
@@ -143,16 +145,15 @@ public class ShowData extends javax.swing.JFrame {
         titleMainLabel.setToolTipText("");
 
         dataTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
+                new Object[][] {
+                        { null, null, null, null },
+                        { null, null, null, null },
+                        { null, null, null, null },
+                        { null, null, null, null }
+                },
+                new String[] {
+                        "Title 1", "Title 2", "Title 3", "Title 4"
+                }));
         jScrollPane1.setViewportView(dataTable);
 
         clearDataButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -190,73 +191,67 @@ public class ShowData extends javax.swing.JFrame {
             }
         });
 
-        exportExcelFileButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        exportExcelFileButton.setText("Xuất danh sách EXCEL");
-        exportExcelFileButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                exportExcelFileButtonActionPerformed(evt);
-            }
-        });
-
-        exportPDFFileButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        exportPDFFileButton.setText("Xuất danh sách PDF");
-        exportPDFFileButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                exportPDFFileButtonActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(titleMainLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 747, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(clearDataButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(search)
-                            .addComponent(searchInput, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(exportExcelFileButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(exportPDFFileButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(titleMainLabel, javax.swing.GroupLayout.Alignment.TRAILING,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE,
+                                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addContainerGap()
+                                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 747,
+                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addGroup(layout
+                                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(clearDataButton,
+                                                                javax.swing.GroupLayout.PREFERRED_SIZE, 200,
+                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(search)
+                                                        .addComponent(searchInput,
+                                                                javax.swing.GroupLayout.PREFERRED_SIZE, 200,
+                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(searchButton,
+                                                                javax.swing.GroupLayout.PREFERRED_SIZE, 200,
+                                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(backButton,
+                                                                javax.swing.GroupLayout.PREFERRED_SIZE, 200,
+                                                                javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(0, 0, Short.MAX_VALUE)))
+                                .addContainerGap()));
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(titleMainLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 342, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(search)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(searchInput, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(clearDataButton, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(exportPDFFileButton, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(exportExcelFileButton, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(26, Short.MAX_VALUE))
-        );
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addGap(31, 31, 31)
+                                .addComponent(titleMainLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+                                .addGap(27, 27, 27)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 342,
+                                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(layout.createSequentialGroup()
+                                                .addComponent(search)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(searchInput, javax.swing.GroupLayout.PREFERRED_SIZE, 28,
+                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 28,
+                                                        javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(clearDataButton, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                                        28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED,
+                                                        javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32,
+                                                        javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addContainerGap(26, Short.MAX_VALUE)));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void clearDataButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearDataButtonActionPerformed
+    private void clearDataButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_clearDataButtonActionPerformed
         if (dataOfShowData.getTypeData().equalsIgnoreCase("toursOfTeacher")) {
             try {
                 int index = dataTable.getSelectedRow();
@@ -264,7 +259,8 @@ public class ShowData extends javax.swing.JFrame {
                     MessageDialog.showInfoDialog(this, "Vui lòng chọn chuyến tham quan mà bạn muốn xóa", "Thông báo");
                     return;
                 }
-                int select = MessageDialog.showConfirmDialog(this, "Bạn có chắc chắn muốn xóa chuyến tham quan này không", "Thông báo");
+                int select = MessageDialog.showConfirmDialog(this,
+                        "Bạn có chắc chắn muốn xóa chuyến tham quan này không", "Thông báo");
                 if (select == 0) {
                     List<Teacher> data_teacher = TeacherDAO.readFromFile();
                     List<Tour> data_tour = TourDAO.readFromFile();
@@ -316,7 +312,8 @@ public class ShowData extends javax.swing.JFrame {
                         MessageDialog.showInfoDialog(this, "Xóa chuyến tham quan thành công", "Thông báo");
                         loadTableData();
                     } else {
-                        MessageDialog.showInfoDialog(dataTable, "Bạn đã tham gia chuyến tham quan này rùi", "Thông báo");
+                        MessageDialog.showInfoDialog(dataTable, "Bạn đã tham gia chuyến tham quan này rùi",
+                                "Thông báo");
                         return;
                     }
                     if (currentDate.compareTo(inputDate) == 0) {
@@ -346,13 +343,15 @@ public class ShowData extends javax.swing.JFrame {
                         MessageDialog.showInfoDialog(this, "Xóa chuyến tham quan thành công", "Thông báo");
                         loadTableData();
                     } else {
-                        MessageDialog.showInfoDialog(dataTable, "Chuyến tham quan này diễn ra vào ngày hôm nay nên bạn không thể hủy", "Thông báo");
+                        MessageDialog.showInfoDialog(dataTable,
+                                "Chuyến tham quan này diễn ra vào ngày hôm nay nên bạn không thể hủy", "Thông báo");
                         return;
                     }
                 }
 
             } catch (Exception ex) {
-                MessageDialog.showErrorDialog(this, "Có lỗi khi xóa chuyến tham quan này của giáo viên, chi tiết: " + ex.getMessage(), "Lỗi");
+                MessageDialog.showErrorDialog(this,
+                        "Có lỗi khi xóa chuyến tham quan này của giáo viên, chi tiết: " + ex.getMessage(), "Lỗi");
             }
         } else if (dataOfShowData.getTypeData().equalsIgnoreCase("toursOfStudents")) {
             try {
@@ -361,7 +360,8 @@ public class ShowData extends javax.swing.JFrame {
                     MessageDialog.showInfoDialog(this, "Vui lòng chọn chuyến tham quan mà bạn muốn xóa", "Thông báo");
                     return;
                 }
-                int select = MessageDialog.showConfirmDialog(this, "Bạn có chắc chắn muốn xóa chuyến tham quan này không", "Thông báo");
+                int select = MessageDialog.showConfirmDialog(this,
+                        "Bạn có chắc chắn muốn xóa chuyến tham quan này không", "Thông báo");
                 if (select == 0) {
                     List<StudentTour> data_student_tours = StudentTourDAO.readFromFile();
                     List<Tour> data_tour = TourDAO.readFromFile();
@@ -390,7 +390,8 @@ public class ShowData extends javax.swing.JFrame {
                         LocalDate inputDate = LocalDate.parse(dateString, formatter);
                         LocalDate currentDate = LocalDate.now();
                         if (currentDate.compareTo(inputDate) == 0) {
-                            MessageDialog.showInfoDialog(dataTable, "Chuyến tham quan này diễn ra vào ngày hôm nay nên bạn không thể hủy", "Thông báo");
+                            MessageDialog.showInfoDialog(dataTable,
+                                    "Chuyến tham quan này diễn ra vào ngày hôm nay nên bạn không thể hủy", "Thông báo");
                             return;
                         }
                         if (currentDate.compareTo(inputDate) > 0) {
@@ -407,7 +408,8 @@ public class ShowData extends javax.swing.JFrame {
                                     Iterator<StudentTour> iterator1 = studentsTour.iterator();
                                     while (iterator1.hasNext()) {
                                         StudentTour st = iterator1.next();
-                                        if (st.getStudentId() == dataOfShowData.getStudentId() && st.getTourId() == id) {
+                                        if (st.getStudentId() == dataOfShowData.getStudentId()
+                                                && st.getTourId() == id) {
                                             iterator1.remove();
                                         }
                                     }
@@ -438,7 +440,8 @@ public class ShowData extends javax.swing.JFrame {
                 }
 
             } catch (Exception ex) {
-                MessageDialog.showErrorDialog(this, "Có lỗi khi xóa chuyến tham quan này của sinh viên này, chi tiết: " + ex.getMessage(), "Lỗi");
+                MessageDialog.showErrorDialog(this,
+                        "Có lỗi khi xóa chuyến tham quan này của sinh viên này, chi tiết: " + ex.getMessage(), "Lỗi");
             }
         } else if (dataOfShowData.getTypeData().equalsIgnoreCase("studentTookPlaceTours")) {
             try {
@@ -459,30 +462,44 @@ public class ShowData extends javax.swing.JFrame {
                 Student selectStudent = StudentService.getById(id);
                 dispose();
                 Tour selectTour = TourService.getTourById(dataOfShowData.getTourId());
-//                RateStudentResult screen = new RateStudentResult(selectTour, selectStudent, true);
-//                screen.setLocationRelativeTo(null);
-//                screen.setVisible(true);
+                RateStudentResult screen = new RateStudentResult(selectTour, selectStudent, true);
+                screen.setLocationRelativeTo(null);
+                screen.setVisible(true);
             } catch (Exception ex) {
                 MessageDialog.showErrorDialog(this, "Có lỗi, chi tiết: " + ex.getMessage(), "Lỗi");
             }
         } else
             searchInput.setText("");
-    }//GEN-LAST:event_clearDataButtonActionPerformed
+    }// GEN-LAST:event_clearDataButtonActionPerformed
 
-    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_backButtonActionPerformed
         dispose();
         if (dataOfShowData.getBackToPage().equalsIgnoreCase("managetoursofteacher")) {
             try {
                 Teacher selectedTea = TeacherService.getTeacherById(dataOfShowData.getTeacherId());
-                
+                ManageToursOfTeacher manageToursOfTeacherScreen = new ManageToursOfTeacher();
+                if (manageToursOfTeacherScreen != null) {
+                    manageToursOfTeacherScreen.setLocationRelativeTo(null);
+                    manageToursOfTeacherScreen.setVisible(true);
+                    manageToursOfTeacherScreen.getTeacherIdLabel().setText("Mã doanh nghiệp: " + selectedTea.getCode());
+                    manageToursOfTeacherScreen.getTeacherNameLabel()
+                            .setText("Tên giáo viên: " + selectedTea.getLastName() + " " + selectedTea.getFirstName());
+                    manageToursOfTeacherScreen.getTeacherPhoneNumberLabel()
+                            .setText("Số điện thoại: " + selectedTea.getPhoneNumber());
+                    manageToursOfTeacherScreen.getTeacherEmailLable().setText("Email: " + selectedTea.getEmail());
+                    manageToursOfTeacherScreen.getTeacherAdressLable().setText("Địa chỉ: " + selectedTea.getAddress());
+                    manageToursOfTeacherScreen.setTeacherID(selectedTea.getId());
+                    manageToursOfTeacherScreen.initializeTable();
+                    dispose();
+                }
             } catch (Exception ex) {
                 MessageDialog.showErrorDialog(this, "Có lỗi, chi tiết: " + ex.getMessage(), "Lỗi");
             }
 
         } else if (dataOfShowData.getBackToPage().equalsIgnoreCase("home")) {
-//            Home home = new Home();
-//            home.setLocationRelativeTo(null);
-//            home.setVisible(true);
+            Home home = new Home();
+            home.setLocationRelativeTo(null);
+            home.setVisible(true);
         } else if (dataOfShowData.getBackToPage().equalsIgnoreCase("studentAndTeacherHome")) {
             try {
                 dispose();
@@ -497,78 +514,36 @@ public class ShowData extends javax.swing.JFrame {
                 screen.setLocationRelativeTo(null);
                 screen.setVisible(true);
             } catch (Exception ex) {
-                MessageDialog.showErrorDialog(search, "Có lỗi ở màn ShowData cụ thể là nút backButtonActionPerformed, chi tiết: " + ex.getMessage(), "Lỗi");
+                MessageDialog.showErrorDialog(search,
+                        "Có lỗi ở màn ShowData cụ thể là nút backButtonActionPerformed, chi tiết: " + ex.getMessage(),
+                        "Lỗi");
             }
         }
-    }//GEN-LAST:event_backButtonActionPerformed
+    }// GEN-LAST:event_backButtonActionPerformed
 
-    private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
+    private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_searchButtonActionPerformed
         searchByKey();
-    }//GEN-LAST:event_searchButtonActionPerformed
+    }// GEN-LAST:event_searchButtonActionPerformed
 
-    private void exportExcelFileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportExcelFileButtonActionPerformed
-        if (dataOfShowData.getTypeData().equalsIgnoreCase("studentTookPlaceTours")) {
-            try {
-                clearTable();
-                loadStudentsAwaitingFeedback(">");
-                tableModel.fireTableDataChanged();
-            } catch (Exception ex) {
-                MessageDialog.showErrorDialog(search, "Có lỗi, chi tiết: " + ex.getMessage(), "Lỗi");
-            }
-        }
-    }//GEN-LAST:event_exportExcelFileButtonActionPerformed
-
-    private void exportPDFFileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exportPDFFileButtonActionPerformed
-        try {
-            if (dataOfShowData.getTypeData().equalsIgnoreCase("studentTookPlaceTours")) {
-                clearTable();
-                loadStudentsAwaitingFeedback("=");
-                tableModel.fireTableDataChanged();
-            } else {
-                String title = "";
-                if (dataOfShowData.getTypeData() != null) {
-                    if (dataOfShowData.getTypeData().equalsIgnoreCase("teachers")) {
-                        title = "DANH SÁCH GIÁO VIÊN ĐẠI DIỆN DOANH NGHIỆP";
-                    } else if (dataOfShowData.getTypeData().equalsIgnoreCase("students")) {
-                        title = "DANH SÁCH SINH VIÊN ĐƯỢC QUẢN LÝ";
-                    } else if (dataOfShowData.getTypeData().equalsIgnoreCase("companys")) {
-                        title = "DANH SÁCH DOANH NGHIỆP LIÊN KẾT VỚI NHÀ TRƯỜNG";
-                    } else if (dataOfShowData.getTypeData().equalsIgnoreCase("tours")) {
-                        title = "DANH SÁCH CÁC CHUYẾN THAM QUAN ĐƯỢC TỔ CHỨC";
-                    } else if (dataOfShowData.getTypeData().equalsIgnoreCase("studentTours")) {
-                        title = "DANH SÁCH SINH VIÊN CỦA CHUYẾN THAM QUAN";
-                    } else if (dataOfShowData.getTypeData().equalsIgnoreCase("toursOfTeacher")) {
-                        Teacher teacher = TeacherService.getTeacherById(dataOfShowData.getTeacherId());
-                        title = "DANH SÁCH CÁC CHUYẾN THAM QUAN CỦA GIÁO VIÊN " + teacher.getLastName().toUpperCase() + " " + teacher.getFirstName().toUpperCase();
-                    } else if (dataOfShowData.getTypeData().equalsIgnoreCase("toursOfStudents")) {
-                        Student stu = StudentService.getById(dataOfShowData.getStudentId());
-                        title = "DANH SÁCH CÁC CHUYẾN THAM QUAN CỦA SINH VIÊN " + stu.getLastName().toUpperCase() + " " + stu.getFirstName().toUpperCase();
-                    }
-                    dataTable.setModel(tableModel);
-                    loadTableData();
-                }
-                //PDFExporter.exportTableToPDF(dataTable, title);
-            }
-        } catch (Exception ex) {
-            MessageDialog.showErrorDialog(search, "Có lỗi, chi tiết: " + ex.getMessage(), "Lỗi");
-        }
-    }//GEN-LAST:event_exportPDFFileButtonActionPerformed
-
-    private void searchInputKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchInputKeyReleased
+    private void searchInputKeyReleased(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_searchInputKeyReleased
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             // Handle Enter key press
             searchByKey();
         }
-    }//GEN-LAST:event_searchInputKeyReleased
+    }// GEN-LAST:event_searchInputKeyReleased
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+        // <editor-fold defaultstate="collapsed" desc=" Look and feel setting code
+        // (optional) ">
+        /*
+         * If Nimbus (introduced in Java SE 6) is not available, stay with the default
+         * look and feel.
+         * For details see
+         * http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -586,8 +561,8 @@ public class ShowData extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(ShowData.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
+        // </editor-fold>
+        // </editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
@@ -635,7 +610,8 @@ public class ShowData extends javax.swing.JFrame {
         List<Teacher> data = TeacherService.getAllTeachers();
         if (data != null) {
             for (Teacher tea : data) {
-                tableModel.addRow(new Object[]{tea.getCode(), tea.getLastName() + " " + tea.getFirstName(), tea.getAddress(), tea.getPhoneNumber(), tea.getEmail(), tea.getBirthDate()});
+                tableModel.addRow(new Object[] { tea.getCode(), tea.getLastName() + " " + tea.getFirstName(),
+                        tea.getAddress(), tea.getPhoneNumber(), tea.getEmail(), tea.getBirthDate() });
             }
         }
     }
@@ -647,8 +623,9 @@ public class ShowData extends javax.swing.JFrame {
                 for (Tour tour : tours) {
                     String companyName = CompanyService.getCompanyNameById(tour.getCompanyId());
                     String teacherName = TeacherService.getTeacherNameById(tour.getTeacherId());
-                    tableModel.addRow(new Object[]{tour.getCode(), tour.getName(), tour.getDescription(), tour.getStartDate(),
-                        tour.getAvailables(), companyName, teacherName, tour.getPresentator()});
+                    tableModel.addRow(
+                            new Object[] { tour.getCode(), tour.getName(), tour.getDescription(), tour.getStartDate(),
+                                    tour.getAvailables(), companyName, teacherName, tour.getPresentator() });
                 }
             }
         } catch (Exception e) {
@@ -664,10 +641,16 @@ public class ShowData extends javax.swing.JFrame {
         if (data != null && students != null && !data.isEmpty()) {
             for (Student stu : students) {
                 for (StudentTour studentTour : data) {
-                    if (studentTour.getStudentId() == stu.getId() && type.equalsIgnoreCase("=") && studentTour.getRate() == 0) {
-                        tableModel.addRow(new Object[]{stu.getCode(), stu.getLastName(), stu.getFirstName(), stu.getAddress(), stu.getPhoneNumber(), stu.getEmail(), stu.getBirthDate(), studentTour.getRate()});
-                    } else if (studentTour.getStudentId() == stu.getId() && type.equalsIgnoreCase(">") && studentTour.getRate() > 0) {
-                        tableModel.addRow(new Object[]{stu.getCode(), stu.getLastName(), stu.getFirstName(), stu.getAddress(), stu.getPhoneNumber(), stu.getEmail(), stu.getBirthDate(), studentTour.getRate()});
+                    if (studentTour.getStudentId() == stu.getId() && type.equalsIgnoreCase("=")
+                            && studentTour.getRate() == 0) {
+                        tableModel.addRow(new Object[] { stu.getCode(), stu.getLastName(), stu.getFirstName(),
+                                stu.getAddress(), stu.getPhoneNumber(), stu.getEmail(), stu.getBirthDate(),
+                                studentTour.getRate() });
+                    } else if (studentTour.getStudentId() == stu.getId() && type.equalsIgnoreCase(">")
+                            && studentTour.getRate() > 0) {
+                        tableModel.addRow(new Object[] { stu.getCode(), stu.getLastName(), stu.getFirstName(),
+                                stu.getAddress(), stu.getPhoneNumber(), stu.getEmail(), stu.getBirthDate(),
+                                studentTour.getRate() });
                     }
                 }
             }
@@ -678,7 +661,8 @@ public class ShowData extends javax.swing.JFrame {
         List<Company> data = CompanyService.getAllCompanies();
         if (data != null) {
             for (Company com : data) {
-                tableModel.addRow(new Object[]{com.getCode(), com.getName(), com.getAddress(), com.getEmail(), com.getPhoneNumber(), com.getDescription()});
+                tableModel.addRow(new Object[] { com.getCode(), com.getName(), com.getAddress(), com.getEmail(),
+                        com.getPhoneNumber(), com.getDescription() });
             }
         }
     }
@@ -687,7 +671,8 @@ public class ShowData extends javax.swing.JFrame {
         List<Student> data = StudentService.getAllStudents();
         if (data != null) {
             for (Student stu : data) {
-                tableModel.addRow(new Object[]{stu.getCode(), stu.getLastName(), stu.getFirstName(), stu.getAddress(), stu.getPhoneNumber(), stu.getEmail(), stu.getBirthDate(), stu.getClassId()});
+                tableModel.addRow(new Object[] { stu.getCode(), stu.getLastName(), stu.getFirstName(), stu.getAddress(),
+                        stu.getPhoneNumber(), stu.getEmail(), stu.getBirthDate(), stu.getClassId() });
             }
         }
     }
@@ -702,7 +687,8 @@ public class ShowData extends javax.swing.JFrame {
                 String companyName = getCompanyName(tour.getCompanyId(), companyData);
                 String teacherName = getTeacherName(tour.getTeacherId(), teacherData);
 
-                tableModel.addRow(new Object[]{tour.getCode(), tour.getName(), tour.getStartDate(), tour.getDescription(), tour.getAvailables(), tour.getPresentator(), companyName, teacherName});
+                tableModel.addRow(new Object[] { tour.getCode(), tour.getName(), tour.getStartDate(),
+                        tour.getDescription(), tour.getAvailables(), tour.getPresentator(), companyName, teacherName });
             }
         }
     }
@@ -733,7 +719,9 @@ public class ShowData extends javax.swing.JFrame {
         if (data != null && students != null && data.size() > 0) {
             for (Student stu : students) {
                 if (containsStudentTourWithId(data, stu.getId())) {
-                    tableModel.addRow(new Object[]{stu.getCode(), stu.getLastName(), stu.getFirstName(), stu.getAddress(), stu.getPhoneNumber(), stu.getEmail(), stu.getBirthDate(), stu.getClassId()});
+                    tableModel.addRow(
+                            new Object[] { stu.getCode(), stu.getLastName(), stu.getFirstName(), stu.getAddress(),
+                                    stu.getPhoneNumber(), stu.getEmail(), stu.getBirthDate(), stu.getClassId() });
                 }
             }
         }
@@ -745,22 +733,24 @@ public class ShowData extends javax.swing.JFrame {
             tableModel.setRowCount(0);
             if (data != null) {
                 for (Tour tourItem : data) {
-                    tableModel.addRow(new Object[]{
-                        tourItem.getCode(), tourItem.getName(), tourItem.getStartDate(),
-                        TeacherService.getNameCompanyFromIdCompany(tourItem.getCompanyId()),
-                        TeacherService.getNumberOfStudents(tourItem.getStudentTours())
+                    tableModel.addRow(new Object[] {
+                            tourItem.getCode(), tourItem.getName(), tourItem.getStartDate(),
+                            TeacherService.getNameCompanyFromIdCompany(tourItem.getCompanyId()),
+                            TeacherService.getNumberOfStudents(tourItem.getStudentTours())
                     });
                 }
             }
             tableModel.fireTableDataChanged();
         } catch (Exception e) {
-            MessageDialog.showErrorDialog(this, "Tải dữ liệu cho bảng có lỗi! Chi tiết: " + e.getMessage(), "Có lỗi xảy ra");
+            MessageDialog.showErrorDialog(this, "Tải dữ liệu cho bảng có lỗi! Chi tiết: " + e.getMessage(),
+                    "Có lỗi xảy ra");
             e.printStackTrace();
         }
     }
 
     private void handleLoadTableDataException(Exception e) {
-        MessageDialog.showErrorDialog(this, "Tải dữ liệu cho bảng có lỗi! Chi tiết: " + e.getMessage(), "Có lỗi xảy ra");
+        MessageDialog.showErrorDialog(this, "Tải dữ liệu cho bảng có lỗi! Chi tiết: " + e.getMessage(),
+                "Có lỗi xảy ra");
         e.printStackTrace();
     }
 
@@ -787,15 +777,21 @@ public class ShowData extends javax.swing.JFrame {
                     tableModel.setRowCount(0);
                     if (data != null) {
                         for (Teacher tea : data) {
-                            if (tea.getFirstName().equalsIgnoreCase(keyword) || tea.getLastName().equalsIgnoreCase(keyword) || keyword.equalsIgnoreCase(tea.getLastName() + tea.getFirstName()) || keyword.equalsIgnoreCase(tea.getCode())) {
-                                tableModel.addRow(new Object[]{tea.getCode(), tea.getLastName() + " " + tea.getFirstName(), tea.getAddress(), tea.getPhoneNumber(), tea.getEmail(), tea.getBirthDate()
+                            if (tea.getFirstName().equalsIgnoreCase(keyword)
+                                    || tea.getLastName().equalsIgnoreCase(keyword)
+                                    || keyword.equalsIgnoreCase(tea.getLastName() + tea.getFirstName())
+                                    || keyword.equalsIgnoreCase(tea.getCode())) {
+                                tableModel.addRow(new Object[] { tea.getCode(),
+                                        tea.getLastName() + " " + tea.getFirstName(), tea.getAddress(),
+                                        tea.getPhoneNumber(), tea.getEmail(), tea.getBirthDate()
                                 });
                             } else {
                                 count++;
                             }
                         }
                         if (count == data.size()) {
-                            MessageDialog.showInfoDialog(dataTable, "Không tìm thấy giáo viên bạn cần tìm", "Thông báo");
+                            MessageDialog.showInfoDialog(dataTable, "Không tìm thấy giáo viên bạn cần tìm",
+                                    "Thông báo");
                             checkAndInitializeTable();
                         }
                     }
@@ -805,19 +801,22 @@ public class ShowData extends javax.swing.JFrame {
                     if (data != null) {
                         for (Company com : data) {
                             if (com.getName().equalsIgnoreCase(keyword) || keyword.equalsIgnoreCase(com.getCode())) {
-                                tableModel.addRow(new Object[]{com.getCode(), com.getName(), com.getAddress(),
-                                    com.getEmail(), com.getPhoneNumber(),
-                                    com.getDescription()});
+                                tableModel.addRow(new Object[] { com.getCode(), com.getName(), com.getAddress(),
+                                        com.getEmail(), com.getPhoneNumber(),
+                                        com.getDescription() });
                             } else {
                                 count++;
                             }
                         }
                         if (count == data.size()) {
-                            MessageDialog.showInfoDialog(dataTable, "Không tìm thấy doanh nghiệp bạn cần tìm", "Thông báo");
+                            MessageDialog.showInfoDialog(dataTable, "Không tìm thấy doanh nghiệp bạn cần tìm",
+                                    "Thông báo");
                             checkAndInitializeTable();
                         }
                     }
-                } else if (dataOfShowData.getTypeData().equalsIgnoreCase("tours") || dataOfShowData.getTypeData().equalsIgnoreCase("toursOfStudents") || dataOfShowData.getTypeData().equalsIgnoreCase("toursOfTeacher")) {
+                } else if (dataOfShowData.getTypeData().equalsIgnoreCase("tours")
+                        || dataOfShowData.getTypeData().equalsIgnoreCase("toursOfStudents")
+                        || dataOfShowData.getTypeData().equalsIgnoreCase("toursOfTeacher")) {
                     List<Tour> tour_data = TourService.getAllTours();
                     List<Company> company_data = CompanyService.getAllCompanies();
                     List<Teacher> teacher_data = TeacherService.getAllTeachers();
@@ -836,17 +835,20 @@ public class ShowData extends javax.swing.JFrame {
                                     teacherName = tea.getLastName() + " " + tea.getFirstName();
                                 }
                             }
-                            if (keyword.equalsIgnoreCase(teacherName) || keyword.equalsIgnoreCase(companyName) || keyword.equalsIgnoreCase(tour.getName()) || keyword.equalsIgnoreCase(tour.getCode())) {
-                                tableModel.addRow(new Object[]{tour.getCode(), tour.getName(),
-                                    tour.getStartDate(), tour.getDescription(),
-                                    tour.getAvailables(),
-                                    tour.getPresentator(), companyName, teacherName});
+                            if (keyword.equalsIgnoreCase(teacherName) || keyword.equalsIgnoreCase(companyName)
+                                    || keyword.equalsIgnoreCase(tour.getName())
+                                    || keyword.equalsIgnoreCase(tour.getCode())) {
+                                tableModel.addRow(new Object[] { tour.getCode(), tour.getName(),
+                                        tour.getStartDate(), tour.getDescription(),
+                                        tour.getAvailables(),
+                                        tour.getPresentator(), companyName, teacherName });
                             } else {
                                 count++;
                             }
                         }
                         if (count == tour_data.size()) {
-                            MessageDialog.showInfoDialog(dataTable, "Không tìm thấy chuyến tham quan doanh nghiệp bạn cần tìm", "Thông báo");
+                            MessageDialog.showInfoDialog(dataTable,
+                                    "Không tìm thấy chuyến tham quan doanh nghiệp bạn cần tìm", "Thông báo");
                             checkAndInitializeTable();
                         }
                     }
@@ -855,20 +857,26 @@ public class ShowData extends javax.swing.JFrame {
                     tableModel.setRowCount(0);
                     if (data != null) {
                         for (Student stu : data) {
-                            if (stu.getFirstName().equalsIgnoreCase(keyword) || stu.getLastName().equalsIgnoreCase(keyword) || keyword.equalsIgnoreCase(stu.getLastName() + stu.getFirstName()) || keyword.equalsIgnoreCase(stu.getCode())) {
-                                tableModel.addRow(new Object[]{stu.getCode(), stu.getLastName(), stu.getFirstName(), stu.getAddress(), stu.getPhoneNumber(), stu.getEmail(), stu.getBirthDate()
+                            if (stu.getFirstName().equalsIgnoreCase(keyword)
+                                    || stu.getLastName().equalsIgnoreCase(keyword)
+                                    || keyword.equalsIgnoreCase(stu.getLastName() + stu.getFirstName())
+                                    || keyword.equalsIgnoreCase(stu.getCode())) {
+                                tableModel.addRow(new Object[] { stu.getCode(), stu.getLastName(), stu.getFirstName(),
+                                        stu.getAddress(), stu.getPhoneNumber(), stu.getEmail(), stu.getBirthDate()
                                 });
                             } else {
                                 count++;
                             }
                         }
                         if (count == data.size()) {
-                            MessageDialog.showInfoDialog(dataTable, "Không tìm thấy sinh viên bạn cần tìm", "Thông báo");
+                            MessageDialog.showInfoDialog(dataTable, "Không tìm thấy sinh viên bạn cần tìm",
+                                    "Thông báo");
                             checkAndInitializeTable();
                         }
                     }
 
-                } else if (dataOfShowData.getTypeData().equalsIgnoreCase("studentTours") || dataOfShowData.getTypeData().equalsIgnoreCase("studentTookPlaceTours")) {
+                } else if (dataOfShowData.getTypeData().equalsIgnoreCase("studentTours")
+                        || dataOfShowData.getTypeData().equalsIgnoreCase("studentTookPlaceTours")) {
                     Tour tour = TourService.getTourById(dataOfShowData.getTourId());
                     if (tour != null) {
                         List<StudentTour> data_students_tour = tour.getStudentTours();
@@ -878,8 +886,13 @@ public class ShowData extends javax.swing.JFrame {
                             for (Student stu : data) {
                                 for (StudentTour item : data_students_tour) {
                                     if (stu.getId() == item.getStudentId()) {
-                                        if (stu.getFirstName().equalsIgnoreCase(keyword) || stu.getLastName().equalsIgnoreCase(keyword) || keyword.equalsIgnoreCase(stu.getLastName() + stu.getFirstName()) || keyword.equalsIgnoreCase(stu.getCode())) {
-                                            tableModel.addRow(new Object[]{stu.getCode(), stu.getLastName(), stu.getFirstName(), stu.getAddress(), stu.getPhoneNumber(), stu.getEmail(), stu.getBirthDate()
+                                        if (stu.getFirstName().equalsIgnoreCase(keyword)
+                                                || stu.getLastName().equalsIgnoreCase(keyword)
+                                                || keyword.equalsIgnoreCase(stu.getLastName() + stu.getFirstName())
+                                                || keyword.equalsIgnoreCase(stu.getCode())) {
+                                            tableModel.addRow(new Object[] { stu.getCode(), stu.getLastName(),
+                                                    stu.getFirstName(), stu.getAddress(), stu.getPhoneNumber(),
+                                                    stu.getEmail(), stu.getBirthDate()
                                             });
                                         } else {
                                             count++;
@@ -888,7 +901,8 @@ public class ShowData extends javax.swing.JFrame {
                                 }
                             }
                             if (count == data_students_tour.size()) {
-                                MessageDialog.showInfoDialog(dataTable, "Không tìm thấy sinh viên bạn cần tìm", "Thông báo");
+                                MessageDialog.showInfoDialog(dataTable, "Không tìm thấy sinh viên bạn cần tìm",
+                                        "Thông báo");
                                 checkAndInitializeTable();
                             }
                         }
@@ -903,8 +917,13 @@ public class ShowData extends javax.swing.JFrame {
                             for (Student stu : data) {
                                 for (StudentTour item : data_students_tour) {
                                     if (stu.getId() == item.getStudentId()) {
-                                        if (stu.getFirstName().equalsIgnoreCase(keyword) || stu.getLastName().equalsIgnoreCase(keyword) || keyword.equalsIgnoreCase(stu.getLastName() + stu.getFirstName()) || keyword.equalsIgnoreCase(stu.getCode())) {
-                                            tableModel.addRow(new Object[]{stu.getCode(), stu.getLastName(), stu.getFirstName(), stu.getAddress(), stu.getPhoneNumber(), stu.getEmail(), stu.getBirthDate(), item.getRate()
+                                        if (stu.getFirstName().equalsIgnoreCase(keyword)
+                                                || stu.getLastName().equalsIgnoreCase(keyword)
+                                                || keyword.equalsIgnoreCase(stu.getLastName() + stu.getFirstName())
+                                                || keyword.equalsIgnoreCase(stu.getCode())) {
+                                            tableModel.addRow(new Object[] { stu.getCode(), stu.getLastName(),
+                                                    stu.getFirstName(), stu.getAddress(), stu.getPhoneNumber(),
+                                                    stu.getEmail(), stu.getBirthDate(), item.getRate()
                                             });
                                         } else {
                                             count++;
@@ -913,7 +932,8 @@ public class ShowData extends javax.swing.JFrame {
                                 }
                             }
                             if (count == data_students_tour.size()) {
-                                MessageDialog.showInfoDialog(dataTable, "Không tìm thấy sinh viên bạn cần tìm", "Thông báo");
+                                MessageDialog.showInfoDialog(dataTable, "Không tìm thấy sinh viên bạn cần tìm",
+                                        "Thông báo");
                                 checkAndInitializeTable();
                             }
                         }
@@ -922,7 +942,8 @@ public class ShowData extends javax.swing.JFrame {
             }
             tableModel.fireTableDataChanged();
         } catch (Exception ex) {
-            MessageDialog.showErrorDialog(this, "Tải dữ liệu cho bảng có lỗi! Chi tiết: " + ex.getMessage(), "Có lỗi xảy ra");
+            MessageDialog.showErrorDialog(this, "Tải dữ liệu cho bảng có lỗi! Chi tiết: " + ex.getMessage(),
+                    "Có lỗi xảy ra");
             ex.printStackTrace();
         }
     }
@@ -931,8 +952,6 @@ public class ShowData extends javax.swing.JFrame {
     private javax.swing.JToggleButton backButton;
     private javax.swing.JToggleButton clearDataButton;
     private javax.swing.JTable dataTable;
-    private javax.swing.JToggleButton exportExcelFileButton;
-    private javax.swing.JToggleButton exportPDFFileButton;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel search;
     private javax.swing.JToggleButton searchButton;

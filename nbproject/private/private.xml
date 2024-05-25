@@ -3,11 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Thanh%20Vinh/OneDrive/Desktop/Work-Space/Web%20design/Java_N8/Java_N8/src/group8_java/school_business_tour_management/dao/AccountDAO.java</file>
-            <file>file:/C:/Users/Thanh%20Vinh/OneDrive/Desktop/Work-Space/Web%20design/Java_N8/Java_N8/src/group8_java/school_business_tour_management/common/MessageDialog.java</file>
-            <file>file:/C:/Users/Thanh%20Vinh/OneDrive/Desktop/Work-Space/Web%20design/Java_N8/Java_N8/src/group8_java/school_business_tour_management/views/ShowData.java</file>
-            <file>file:/C:/Users/Thanh%20Vinh/OneDrive/Desktop/Work-Space/Web%20design/Java_N8/Java_N8/src/group8_java/school_business_tour_management/group8_javaschool_bussiness_tour_management.java</file>
-            <file>file:/C:/Users/Thanh%20Vinh/OneDrive/Desktop/Work-Space/Web%20design/Java_N8/Java_N8/src/group8_java/school_business_tour_management/views/StudentAndTeacherHome.java</file>
+            <file>file:/E:/DH%202023-%202024/Java/Java_N8/src/group8_java/school_business_tour_management/views/AddStudentToTour.java</file>
+            <file>file:/E:/DH%202023-%202024/Java/Java_N8/src/group8_java/school_business_tour_management/views/ManageToursOfCompany.java</file>
+            <file>file:/E:/DH%202023-%202024/Java/Java_N8/src/group8_java/school_business_tour_management/views/ManageCompany.java</file>
+            <file>file:/E:/DH%202023-%202024/Java/Java_N8/src/group8_java/school_business_tour_management/views/RateStudentResult.java</file>
         </group>
     </open-files>
 </project-private>
