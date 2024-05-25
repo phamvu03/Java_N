@@ -36,7 +36,7 @@ public class ManageListStudentClass extends javax.swing.JFrame {
      * Creates new form ManageStudent
      */
     private String selectedImagePath = "";
-    private static final String imageFolderPath = "src/group7_java/school_bussiness_tour_management/resources/";
+    private static final String imageFolderPath = "src/group8_java/school_bussiness_tour_management/resources/";
     public Classroom classroomm = new Classroom();
 
     public ManageListStudentClass() {
@@ -315,7 +315,7 @@ public class ManageListStudentClass extends javax.swing.JFrame {
     private void btn_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addActionPerformed
         try {
             int id = StudentService.getLastStudentId();
-            String imagePath = "src\\\\group7_java\\\\school_bussiness_tour_management\\\\resources\\\\user.jpg";
+            String imagePath = "src\\\\group8_java\\\\school_bussiness_tour_management\\\\resources\\\\user.jpg";
             if (selectedImagePath.trim() != "") {
                 imagePath = selectedImagePath;
             }
@@ -449,7 +449,7 @@ public class ManageListStudentClass extends javax.swing.JFrame {
 
             // Tạo đường dẫn mới cho tập tin hình ảnh đến thư mục đích
             Path currentDirectory = Paths.get("").toAbsolutePath();
-            Path destinationDirectory = currentDirectory.resolve(Paths.get("src", "group7_java", "school_bussiness_tour_management", "resources"));
+            Path destinationDirectory = currentDirectory.resolve(Paths.get("src", "group8_java", "school_bussiness_tour_management", "resources"));
             Path destinationPath = destinationDirectory.resolve(selectedImageFile.getName());
 
             try {
