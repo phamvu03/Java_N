@@ -421,18 +421,18 @@ public class StudentAndTeacherHome extends javax.swing.JFrame {
 
     private void updateProfileActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_updateProfileActionPerformed
         try {
-            // if (loggedInStudent != null) {
-            // dispose();
-            // PersonalAccountInformation personalAccountInformationScreen = new
-            // PersonalAccountInformation(loggedInStudent);
-            // personalAccountInformationScreen.setLocationRelativeTo(null);
-            // personalAccountInformationScreen.setVisible(true);
-            // } else if (loggedInTeacher != null) {
-            // dispose();
-            // TeacherProfile screen = new TeacherProfile(loggedInTeacher);
-            // screen.setLocationRelativeTo(null);
-            // screen.setVisible(true);
-            // }
+            if (loggedInStudent != null) {
+                dispose();
+                PersonalAccountInformation personalAccountInformationScreen = new PersonalAccountInformation(
+                        loggedInStudent);
+                personalAccountInformationScreen.setLocationRelativeTo(null);
+                personalAccountInformationScreen.setVisible(true);
+            } else if (loggedInTeacher != null) {
+                dispose();
+                TeacherProfile screen = new TeacherProfile(loggedInTeacher);
+                screen.setLocationRelativeTo(null);
+                screen.setVisible(true);
+            }
         } catch (Exception ex) {
             MessageDialog.showErrorDialog(jPanel1, "Có lỗi, chi tiết: " + ex.getMessage(), "Lỗi");
         }
@@ -541,12 +541,12 @@ public class StudentAndTeacherHome extends javax.swing.JFrame {
 
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_logoutButtonActionPerformed
         int key = MessageDialog.showConfirmDialog(this, "Bạn có chắc muốn đăng xuất khỏi hệ thống?", "Xác nhận");
-        // if (key == 0) {
-        // dispose();
-        // Login loginScreen = new Login();
-        // loginScreen.setLocationRelativeTo(null);
-        // loginScreen.setVisible(true);
-        // }
+        if (key == 0) {
+            dispose();
+            Login loginScreen = new Login();
+            loginScreen.setLocationRelativeTo(null);
+            loginScreen.setVisible(true);
+        }
     }// GEN-LAST:event_logoutButtonActionPerformed
 
     private void searchInputKeyReleased(java.awt.event.KeyEvent evt) {// GEN-FIRST:event_searchInputKeyReleased
