@@ -4,7 +4,6 @@ import group8_java.school_business_tour_management.common.MessageDialog;
 import group8_java.school_business_tour_management.models.Account;
 import group8_java.school_business_tour_management.services.AccountService;
 import java.util.List;
-import javax.swing.JComboBox;
 import javax.swing.table.DefaultTableModel;
 
 public class ManageAccount extends javax.swing.JFrame {
@@ -187,10 +186,10 @@ public class ManageAccount extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void turnBackHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_turnBackHomeActionPerformed
-//        dispose();
-//        Home homeScreen = new Home();
-//        homeScreen.setLocationRelativeTo(null);
-//        homeScreen.setVisible(true);
+        dispose();
+        Home homeScreen = new Home();
+        homeScreen.setLocationRelativeTo(null);
+        homeScreen.setVisible(true);
     }//GEN-LAST:event_turnBackHomeActionPerformed
 
     private void createAccountButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createAccountButtonActionPerformed

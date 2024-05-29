@@ -225,10 +225,10 @@ public class ManageCompany extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void turnBackHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_turnBackHomeActionPerformed
-//        dispose();
-//        Home homeScreen = new Home();
-//        homeScreen.setLocationRelativeTo(null);
-//        homeScreen.setVisible(true);
+        dispose();
+        Home homeScreen = new Home();
+        homeScreen.setLocationRelativeTo(null);
+        homeScreen.setVisible(true);
     }//GEN-LAST:event_turnBackHomeActionPerformed
 
     private void clearAllFields() {
