@@ -429,11 +429,11 @@ public class RateStudentResult extends javax.swing.JFrame {
             StudentTourService.updateStudentTour(this.selectedStudent.getId(), this.selectedTour.getId(), rate);
             this.selectedTour = TourService.getById(this.selectedTour.getId());
             if (isShowData) {
-//                dispose();
-//                TransmittedDataShowData showSata = new TransmittedDataShowData("studentTookPlaceTours", "studentAndTeacherHome", selectedTour.getId(), selectedTour.getTeacherId(), false);
-//                ShowData screen = new ShowData(showSata);
-//                screen.setLocationRelativeTo(null);
-//                screen.setVisible(true);
+                dispose();
+                TransmittedDataShowData showSata = new TransmittedDataShowData("studentTookPlaceTours", "studentAndTeacherHome", selectedTour.getId(), selectedTour.getTeacherId(), false);
+                ShowData screen = new ShowData(showSata);
+                screen.setLocationRelativeTo(null);
+                screen.setVisible(true);
             } else {
                 dispose();
                 ManageTourStudent screen = new ManageTourStudent(this.selectedTour);
@@ -472,20 +472,6 @@ public class RateStudentResult extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(RateStudentResult.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 

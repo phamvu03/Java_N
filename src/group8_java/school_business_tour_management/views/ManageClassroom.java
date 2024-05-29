@@ -183,9 +183,9 @@ public class ManageClassroom extends javax.swing.JFrame {
 
     private void turnBackHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_turnBackHomeActionPerformed
         dispose();
-//        Home homeScreen = new Home();
-//        homeScreen.setLocationRelativeTo(null);
-//        homeScreen.setVisible(true);
+        Home homeScreen = new Home();
+        homeScreen.setLocationRelativeTo(null);
+        homeScreen.setVisible(true);
     }//GEN-LAST:event_turnBackHomeActionPerformed
 
     private void ListStudentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListStudentButtonActionPerformed

@@ -26,10 +26,6 @@ import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author gialo
- */
 public class ManageListStudentClass extends javax.swing.JFrame {
 
     /**
