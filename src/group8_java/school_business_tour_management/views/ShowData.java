@@ -33,7 +33,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author NGUYEN TRANG
+ * @author Pham Vu
  */
 public class ShowData extends javax.swing.JFrame {
 
